@@ -1,6 +1,6 @@
 # Wikipedia Article Quality
 
-Authored by **[Luke Dowker](mailto:lhdowker@gmail.com)** ([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/))
+> Authored by **[Luke Dowker](mailto:lhdowker@gmail.com)** ([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/))
 
 # Overview
 
@@ -26,8 +26,9 @@ Link to [dataset](https://www.kaggle.com/datasets/urbanbricks/wikipedia-promotio
 ├── images
 ├── src
 ├── README.md
+├── presentation.pdf
 └── Final_Notebook.ipynb
 ```
 ## Further Reading and Citations
-- Link to [Jupyter notebook]()
-- Link to [non-technical presentation]()
+- Link to [Jupyter notebook](Final_Notebook.ipynb)
+- Link to [non-technical presentation](presentation.pdf)
