@@ -1,6 +1,6 @@
 # Wikipedia Article Quality
 
-> Authored by **[Luke Dowker](mailto:lhdowker@gmail.com)** ([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/))
+- Authored by **[Luke Dowker](mailto:lhdowker@gmail.com)** ([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/))
 
 # Overview
 
