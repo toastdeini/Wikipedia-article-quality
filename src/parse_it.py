@@ -1,8 +1,10 @@
 from nltk import pos_tag
 from nltk.corpus import stopwords, wordnet
+from nltk.probability import FreqDist
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.tokenize import RegexpTokenizer
 sw = stopwords.words('english')
+
 
 def get_wordnet_pos(nltk_tag):
     '''
@@ -66,3 +68,22 @@ def parse_doc(doc, root = 'lemmatize', stop_words = sw, as_list = False):
         return doc
     else:
         return ' '.join(doc)
+
+    
+def freq_out(df, col, n, stop_words = sw):
+    '''
+    Quick frequency distribution of the top n words from a document.
+    
+    :param df: DataFrame object
+    :param col: Column from DataFrame on which to run the function.
+    :param n: Number of most common items.
+    :param stop_words: Stop words for parsing.
+    :return: List of tuples containing most common words and number of occurrences.
+    '''
+    
+    word_freq = FreqDist()
+    
+    for text in df[col].map(lambda x: parse_doc(x)):
+        for word in text.split():
+            word_freq[word] +=1
+    return word_freq.most_commmon(n=n)
