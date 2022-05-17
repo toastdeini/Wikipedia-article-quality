@@ -2,10 +2,10 @@
 
 ![img](images/tomes.jpg)
 
-(Photo courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk))
+*(photo courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk))*
 
 ### Authors
-- [Luke Dowker](mailto:lhdowker@gmail.com)([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/))
+- **Luke Dowker** ([GitHub](https://github.com/toastdeini) | [LinkedIn](https://www.linkedin.com/in/luke-dowker/) | [Email](mailto:lhdowker@gmail.com))
 
 # Overview
 
@@ -21,16 +21,21 @@ Data used in this project is freely available for download on [Kaggle](https://w
 
 <!-- image of imbalanced classes in promotional.csv dataset to justify pursuit of binary classification as starter problem -->
 
+It is important to note that the classes in discussion here - that is, whether an article meets the criteria for a "good article" or whether its contents are "promotional"/non-neutral - were **evaluated and labeled** by Wikipedia users and editors. 
+
 # Methods
 
 - Relevant `scikit-learn` libraries
 - Relevant `nltk` modules
+    - `CountVectorizer` / `TfidfVectorizer`
 - Description of iterative modeling process
 
 # Results
 
 - What algorithms yielded the best results? Why? What was the process like?
 - What *are* those results? What can we conclude from them?
+
+<!-- Visualization of error -->
 
 # Conclusions
 
