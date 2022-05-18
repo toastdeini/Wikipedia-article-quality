@@ -1,4 +1,4 @@
-# Wikipedia Article Quality
+# Predicting Wikipedia Article Quality Using Natural Language Processing
 
 ![img](images/tomes.jpg)
 
@@ -9,7 +9,7 @@
 
 # Overview
 
-Over the course of its twenty-plus-year existence, Wikipedia's reputation has gradually evolved from that of a digital ["Wild West"](https://www.cnn.com/2009/TECH/08/26/wikipedia.editors/index.html) replete with [misinformation](https://usatoday30.usatoday.com/news/opinion/editorials/2005-11-29-wikipedia-edit_x.htm) to that of a [meticulously](https://en.wikipedia.org/wiki/Vandalism_on_Wikipedia#Prevention) curated and (generally) reliable resource for [fact-checking](https://en.wikipedia.org/wiki/Wikipedia_and_fact-checking) & bird's-eye/survey-level research. 
+Over the course of its twenty-plus-year existence, Wikipedia's reputation has gradually evolved from that of a [digital "Wild West"](https://www.cnn.com/2009/TECH/08/26/wikipedia.editors/index.html) replete with [misinformation](https://usatoday30.usatoday.com/news/opinion/editorials/2005-11-29-wikipedia-edit_x.htm) to that of a [meticulously](https://en.wikipedia.org/wiki/Vandalism_on_Wikipedia#Prevention) curated and (generally) reliable resource for [fact-checking](https://en.wikipedia.org/wiki/Wikipedia_and_fact-checking) & bird's-eye/survey-level research. 
 
 # Business Problem
 
