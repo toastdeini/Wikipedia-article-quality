@@ -17,23 +17,23 @@ Create a tool/model/application with natural language processing (NLP) that can 
 
 # Data
 
-Data used in this project is freely available for download on [Kaggle](https://www.kaggle.com/datasets/urbanbricks/wikipedia-promotional-articles), courtesy of user `urbanbricks`. "[Good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_articles)" - articles which meet a "core set of editorial standards" - were stored as strings (with corresponding URLs) in one CSV file, `good.csv`. Articles with a "[promotional tone](https://en.wikipedia.org/wiki/Category:Articles_with_a_promotional_tone)" were stored in a separate CSV (`promotional.csv`) that, in addition to `text` and `url` columns, contains one-hot encoded columns that identify a subtype of promotional tone, e.g. `advert` (written like an advertisement - this accounts for the majority of documents in the dataset) or `coi` (conflict of interest with subject).
+Data used in this project is freely available for download on [Kaggle](https://www.kaggle.com/datasets/urbanbricks/wikipedia-promotional-articles), courtesy of user `urbanbricks`. "[Good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_articles)" - articles which meet a "core set of editorial standards" - were stored as strings (with corresponding URLs) in one CSV file, `good.csv`. Articles with a "[promotional tone](https://en.wikipedia.org/wiki/Category:Articles_with_a_promotional_tone)" were stored in a separate CSV (`promotional.csv`) that, in addition to `text` and `url` columns, contains one-hot encoded columns that identify a subclass of promotional tone, e.g. `advert` (written like an advertisement) or `coi` (conflict of interest with subject).
 
-<!-- image of imbalanced classes in promotional.csv dataset to justify pursuit of binary classification as starter problem -->
+![img](images/promo_dist.png)
 
-It is important to note that the classes in discussion here - that is, whether an article meets the criteria for a "good article" or whether its contents are "promotional"/non-neutral - were **evaluated and labeled** by Wikipedia users and editors. 
+It is important to note that the classes in discussion here - that is, whether an article meets the criteria for a "good article" or whether its contents are "promotional"/non-neutral - were **evaluated and labeled** by Wikipedia users and editors, and that this dataset (and consequently, these two classes) ***do not*** represent the full corpus of English-language Wikipedia.
+
+A brief inquiry into the *length* of the documents belonging to each class revealed that `good` articles are, on average, about **three times longer** than `promotional` articles. This is, of course, inferential & descriptive rather than predictive, but it helps deepen our understanding of the data.
+
+![img](images/avg_word_count.png)
 
 # Methods
 
-- Relevant `scikit-learn` libraries
-- Relevant `nltk` modules
-    - `CountVectorizer` / `TfidfVectorizer`
-- Description of iterative modeling process
+Initial exploration & analysis of the data utilized the [pandas](https://pandas.pydata.org/docs/index.html#) library for Python; exploratory visualizations were created using [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/). Preprocessing the data required modules from both [scikit-learn](https://scikit-learn.org/stable/) and NLTK ([Natural Language Toolkit](https://www.nltk.org/index.html)).
 
 # Results
 
-- What algorithms yielded the best results? Why? What was the process like?
-- What *are* those results? What can we conclude from them?
+The performance baseline for analysis was an accuracy rate of **56%**, or `0.56` - 
 
 <!-- Visualization of error -->
 
