@@ -13,7 +13,7 @@ Over the course of its twenty-plus-year existence, Wikipedia's reputation has gr
 
 # Business Problem
 
-Create a tool/model/application with natural language processing (NLP) that can predict whether a body of text, e.g. a Wikipedia article, meets objective standards of quality or if it is marked by a promotional tone, indicating potential for bias. 
+Create a tool/model/application with natural language processing (NLP) that can predict whether a body of text, e.g. a Wikipedia article, meets objective standards of quality or if it is marked by a promotional tone, indicating potential for bias. An effective product will benefit both stakeholders at Wikipedia and the website's users.
 
 # Data
 
@@ -23,7 +23,7 @@ Data used in this project is freely available for download on [Kaggle](https://w
 
 It is important to note that the classes in discussion here - that is, whether an article meets the criteria for a "good article" or whether its contents are "promotional"/non-neutral - were **evaluated and labeled** by Wikipedia users and editors, and that this dataset (and consequently, these two classes) ***do not*** represent the full corpus of English-language Wikipedia.
 
-A brief inquiry into the *length* of the documents belonging to each class revealed that `good` articles are, on average, about **three times longer** than `promotional` articles. This is, of course, inferential & descriptive rather than predictive, but it helps deepen our understanding of the data.
+A brief inquiry into the *length* of the documents belonging to each class revealed that `good` articles are, on average, about **three times longer** than `promotional` articles. This is descriptive, not predictive, but it helps enhance our understanding of the data.
 
 ![img](images/avg_word_count.png)
 
@@ -31,9 +31,13 @@ A brief inquiry into the *length* of the documents belonging to each class revea
 
 Initial exploration & analysis of the data utilized the [pandas](https://pandas.pydata.org/docs/index.html#) library for Python; exploratory visualizations were created using [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/). Preprocessing the data required modules from both [scikit-learn](https://scikit-learn.org/stable/) and NLTK ([Natural Language Toolkit](https://www.nltk.org/index.html)).
 
-# Results
+Two vectorization methods were tested for each algorithm employed: a simple bag-of-words approach (`CountVectorizer`) and a term importance approach (`TfidfVectorizer`).
 
-The performance baseline for analysis was an accuracy rate of **56%**, or `0.56` - 
+scikit-learn's `DummyClassifier` acted as a baseline model, against which other algorithms could be compared. The `DummyClassifier` returned an accuracy score of **0.560**, i.e. the proportion of the majority class ("good" articles) in the dataset. Any algorithm that predicts with a lower accuracy score than the dummy is effectively worthless, as far as we're concerned, and we'll be looking to improve substantially on that 56% accuracy rate in the iterative modeling process.
+
+Modeling began with two straightforward classification algorithms: decision trees (`DecisionTreeClassifier`) and multinomial naive Bayes (`MultinomialNB`). With no hyperparameter tuning, cross-validation results were as follows:
+
+# Results
 
 <!-- Visualization of error -->
 
