@@ -83,15 +83,21 @@ class ModelForScoring():
 
 def pretty_cv(result):
     '''
-    Generic function to print 'pretty' results from the results of `cross_validate`.
+    Generic function to print 'pretty' results from the results of multi-metric `cross_validate`.
+    
+    Can only be used when `scoring` set to `accuracy` and `f1_macro`,
+    and `return_train_score` set to True.
     '''
-    print('CV Results')
-    print('='*32)
-    print('Accuracy')
-    print('-'*32)
-    print(f"Training accuracy: {result['train_accuracy'].mean():.3f}")
-    print(f"Test accuracy:     {result['test_accuracy'].mean():.3f}")
-    print('F-1 Score')
-    print('-'*32)
-    print(f"Training F1 score: {result['train_f1_macro'].mean():.3f}")
-    print(f"Test F1 score:     {result['test_f1_macro'].mean():.3f}")
+    if 'test_accuracy' and 'test_f1_macro' in result.keys():
+        print('CV Results')
+        print('='*32)
+        print('Accuracy')
+        print('-'*32)
+        print(f"Training accuracy: {result['train_accuracy'].mean():.3f}")
+        print(f"Test accuracy:     {result['test_accuracy'].mean():.3f}")
+        print('F-1 Score')
+        print('-'*32)
+        print(f"Training F1 score: {result['train_f1_macro'].mean():.3f}")
+        print(f"Test F1 score:     {result['test_f1_macro'].mean():.3f}")
+    else:
+        print("Metrics do not match.")
