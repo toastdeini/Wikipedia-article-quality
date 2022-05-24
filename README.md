@@ -57,6 +57,8 @@ Modeling began with two straightforward classification algorithms: decision tree
         - Accuracy: `0.793`
         - F1 score (macro): `0.770`
 
+## Final Model for Testing
+
 The massively popular gradient boosting library [XGBoost](https://xgboost.readthedocs.io/en/stable/) proved most effective in accurately identifying an article as "promotional."
 
 # Results

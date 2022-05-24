@@ -1,6 +1,6 @@
-from sklearn.model_selection import cross_val_score
 import numpy as np
 import seaborn as sns
+from sklearn.model_selection import cross_validate, cross_val_score
 
 # Model scoring class
 
@@ -11,19 +11,26 @@ class ModelForScoring():
     Lifted and modified from Flatiron DS Live lecture #51, "Workflow With Pipelines."
     '''
     
-    def __init__(self, model, model_name, X, y, cv_now=True):
+    def __init__(self, model, model_name, X, y, cv_now='simple'):
         self.model = model
         self.name = model_name
         self.X = X
         self.y = y
+        
         # for CV results
         self.cv_results = None
         self.cv_mean = None
         self.cv_median = None
         self.cv_std = None
-        #
-        if cv_now:
-            self.cv_score()
+        
+        # Cross-validate now?
+        if cv_now == 'simple':
+            self.cv_simple()
+        elif cv_now == 'multi':
+            self.cv_multi()
+        else:
+            pass
+           
             
     def cv_simple(self, X=None, y=None, kfolds=5):
         '''
@@ -41,6 +48,7 @@ class ModelForScoring():
         self.cv_median = np.median(self.cv_results)
         self.cv_std = np.std(self.cv_results)
         
+        
     def cv_multi(self, X=None, y=None, s_metrics=None, kfolds=5, verbose=1):
         '''
         Multi-metric results of cross-validation with training scores for comparison.
@@ -48,12 +56,11 @@ class ModelForScoring():
         X, y: Optional, training data. Otherwise use X, y from object
         s_metrics: Scoring metrics to use - if blank, use accuracy and F1 macro score
         kfolds: Optional, # of folds for CV. Default is 5, bump up to 10 if necessary
-        verbose: Default 1 to display cross-validation time, set to zero for cleaner print.
+        verbose: Default 1 to display cross-validation time, set to 0 for cleaner print.
         '''
         
         cv_X = X if X else self.X
         cv_y = y if y else self.y
-        
         scoring_metrics = s_metrics if s_metrics else ['accuracy', 'f1_macro']
         
         self.cv_results = cross_validate(estimator=self.model,
@@ -63,7 +70,14 @@ class ModelForScoring():
                                          cv=kfolds,
                                          verbose=verbose,
                                          return_train_score=True)
-
+        
+        if 'accuracy' in scoring_metrics:
+            self.cv_mean = np.mean(self.cv_results['test_accuracy'])
+            self.cv_median = np.median(self.cv_results['test_accuracy'])
+            self.cv_std = np.std(self.cv_results['test_accuracy'])
+        else:
+            pass
+        
                                          
 # Global scoring function
 
