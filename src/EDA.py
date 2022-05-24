@@ -1,0 +1,80 @@
+import pandas as pd
+import numpy as np
+    
+    
+def word_count(document):
+    '''
+    Simple function to count the number of words in a string, passed in
+    as `document`.
+    '''
+    
+    # Split the document on whitespace to create a list of words
+    words = document.split()
+    # Check the length of the words list
+    total = len(words)
+    
+    return total
+
+
+def character_count(document):
+    '''
+    Simple function to count the number of characters in a string.
+    '''
+    
+    # Remove whitespace
+    new_doc = document.replace(oldvalue=' ',
+                               newvalue='')
+    # Check the length of the string
+    total = len(new_doc)
+    
+    return total
+
+
+
+def compare_avg_counts(df, text_col, label_col, false_label, true_label, create_plot=False):
+    '''
+    Used within the context of this project to compare word & character counts
+    between `good` (label = 0) articles and `promotional` (label = 1) articles.
+    
+    Compares average word & character count across two labels in a dataframe.
+    
+    :param df: Dataframe object containing text and labels.
+    :param text_col: String, name of column containing the words/characters to be counted.
+    :param label_col: String, name of column containing the labels.
+    :param false_label: int, string, or bool
+    :param true_label: int, string, or bool
+    '''
+
+    avg_char_false = df.loc[df[label_col] == false_label][text_col].str.len().mean()
+    avg_char_true = df.loc[df[label_col] == true_label][text_col].str.len().mean()
+    
+    split_words_false = df.loc[df[label_col] == false_label][text_col].str.split()
+    split_words_true = df.loc[df[label_col] == true_label][text_col].str.split()
+    
+    word_count_false = 0
+    word_count_true = 0
+    
+    for doc in split_words_false:
+        word_count_false += len(doc)
+        
+    for doc in split_words_true:
+        word_count_true += len(doc)
+        
+    avg_words_false = word_count_false / len(split_words_false)
+    avg_words_true = word_count_true / len(split_words_true)
+    
+    return (avg_words_false, avg_words_true)
+    
+    if summary:
+        print(f"Average document length, label {false_label}: {avg_words_false:.0f} words, {avg_char_false:.0f} characters.")
+        print(f"Average document length, label {true_label}: {avg_words_true:.0f} words, {avg_char_true:.0f} characters.")
+    
+    if create_plot:
+        pass
+
+def plot_word_counts():
+    '''
+    '''
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    

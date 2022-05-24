@@ -2,7 +2,7 @@ import numpy as np
 import seaborn as sns
 from sklearn.model_selection import cross_validate, cross_val_score
 
-# Model scoring class
+# 1.) Model scoring class
 
 class ModelForScoring():
     '''
@@ -54,7 +54,7 @@ class ModelForScoring():
         Multi-metric results of cross-validation with training scores for comparison.
         
         X, y: Optional, training data. Otherwise use X, y from object
-        s_metrics: Scoring metrics to use - if blank, use accuracy and F1 macro score
+        s_metrics: Scoring metrics to use - if None, use accuracy and F1 macro score
         kfolds: Optional, # of folds for CV. Default is 5, bump up to 10 if necessary
         verbose: Default 1 to display cross-validation time, set to 0 for cleaner print.
         '''
@@ -79,7 +79,7 @@ class ModelForScoring():
             pass
         
                                          
-# Global scoring function
+# 2.) Global scoring function
 
 def pretty_cv(result):
     '''
@@ -100,4 +100,4 @@ def pretty_cv(result):
         print(f"Training F1 score: {result['train_f1_macro'].mean():.3f}")
         print(f"Test F1 score:     {result['test_f1_macro'].mean():.3f}")
     else:
-        print("Metrics do not match.")
+        print("Error: Metrics do not match.")
