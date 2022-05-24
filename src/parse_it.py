@@ -55,8 +55,8 @@ def parse_doc(doc, root = 'lemmatize', stop_words = sw, as_list = False):
     if root == 'lemmatize':
         lemmatizer = WordNetLemmatizer()
         doc = pos_tag(doc)
-        doc = [ ( word[0] , get_wordnet_pos( word[1] ) ) for word in doc]
-        doc = [lemmatizer.lemmatize( word[0], word[1] ) for word in doc]
+        doc = [(word[0], get_wordnet_pos(word[1])) for word in doc]
+        doc = [lemmatizer.lemmatize(word[0], word[1]) for word in doc]
     elif root == 'stem':
         stemmer = PorterStemmer()
         doc = [stemmer.stem(word) for word in doc]
