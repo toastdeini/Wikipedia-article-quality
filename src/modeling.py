@@ -51,12 +51,23 @@ class ModelForScoring():
         
     def cv_multi(self, X=None, y=None, s_metrics=None, kfolds=5, verbose=1):
         '''
-        Multi-metric results of cross-validation with training scores for comparison.
+        Multi-metric results of cross-validation,
+        with training scores for comparison.
         
-        X, y: Optional, training data. Otherwise use X, y from object
-        s_metrics: Scoring metrics to use - if None, use accuracy and F1 macro score
-        kfolds: Optional, # of folds for CV. Default is 5, bump up to 10 if necessary
-        verbose: Default 1 to display cross-validation time, set to 0 for cleaner print.
+        Parameters
+        ----------
+        X, y : optional
+            Training data - use X, y from
+            object if not specified.
+        s_metrics : string or list-like
+            Scoring metrics to use. If none,
+            use accuracy and F1 macro.
+        kfolds : int, optional
+            Optional, # of folds for cross-validation.
+            Default is 5.
+        verbose : int, optional
+            Display cross-validation time. Set to 0
+            for cleaner print.
         '''
         
         cv_X = X if X else self.X
