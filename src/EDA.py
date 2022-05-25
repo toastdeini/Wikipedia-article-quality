@@ -116,7 +116,7 @@ def plot_word_counts(f_average, t_average, false_label=0, true_label=1):
     
     
 
-def plot_subclass_dist(df, ):
+def plot_subclass_dist(df, labels):
     '''
     
     Parameters
@@ -132,3 +132,19 @@ def plot_subclass_dist(df, ):
     of the desired subclasses.
     
     '''
+    
+    # Get list out of numerical columns
+    subclass_cols = df.select_dtypes(include='number').columns.tolist()
+    true_counts = []
+    
+    for col in subclass_cols:
+        true_freq = df[[col]].value_counts(sort=False, normalize=True).values[1]
+        true_counts.append(true_freq)
+        
+    fig, ax = plt.subplots()
+    
+    ax.bar(x=labels,
+           height=true_counts)
+    
+    ax.set_title("Distribution of subclasses")
+    plt.show()
