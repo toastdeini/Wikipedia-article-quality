@@ -76,7 +76,24 @@ def compare_avg_counts(df, text_col, label_col, false_label, true_label, summary
     
 def plot_word_counts(f_average, t_average, false_label=0, true_label=1):
     '''
-    Display average word counts as a simple horizontal bar chart.
+    
+    Displays average word counts as a
+    simple horizontal bar chart.
+    
+    Parameters
+    ----------
+    f_average : int or float
+    t_average : int or float
+        
+    false_label : int or string, optional
+    true_label : int or string, optional
+        
+        
+    Returns
+    -------
+    Matplotlib figure displaying the average word
+    counts across two classes.
+    
     '''
     fig, ax = plt.subplots(figsize=(12, 6))
     
@@ -96,3 +113,22 @@ def plot_word_counts(f_average, t_average, false_label=0, true_label=1):
     ax.set_xlabel("# of words",
                   labelpad=20,
                   fontsize=16)
+    
+    
+
+def plot_subclass_dist(df, ):
+    '''
+    
+    Parameters
+    ----------
+    df : pandas DataFrame object
+        The dataframe containing the subclasses you'd
+        like to count.
+    
+    
+    Returns
+    -------
+    Matplotlib figure displaying the distribution
+    of the desired subclasses.
+    
+    '''

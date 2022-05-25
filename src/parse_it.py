@@ -24,23 +24,37 @@ def get_wordnet_pos(nltk_tag):
         return wordnet.NOUN
     
     
-def parse_doc(doc, root = 'lemmatize', stop_words = sw, as_list = False):
+def parse_doc(doc, root = 'lemma', stop_words = sw, as_list = False):
     '''
-    Modified from Flatiron DS Live curriculum, lecture #65 "NLP Modeling."
+    Modified from Flatiron DS Live curriculum,
+    lecture #65 "NLP Modeling."
     
-    :param doc: A string of text from the corpus.
-    :param root: A string to determine whether the document will be...
-                    lemmatized ('lemmatize'),
-                    stemmed ('stem'),
-                    or whether words will retain their full form.
-    :param stop_words: Stopwords; defaults to NLTK's English stopwords list.
-    :param as_list: Sets the object type for what the function returns (defaults to a string). If a list of tokens is preferable,
-                    set as_list as True.
-    :return: A document string in which all words have been...
-                stripped of punctuation & numbers,
-                made lowercase,
-                parsed for stopwords,
-                and lemmatized/stemmed.
+    Parameters
+    ----------
+    doc : string
+        A string of text from the corpus.
+    root : string, optional
+        Determines whether the document will be...
+        lemmatized ('lemma' - default),
+        stemmed ('stem'),
+        or unmodified (None/False)
+    stop_words : list, optional
+        Stopwords for removal. Defaults to NLTK's
+        English stopwords list.
+    as_list : bool, optional
+        Sets object type for function's returned
+        object. Defaults to a string, i.e. `as_list
+        = False`.
+    
+    Returns
+    -------
+    doc
+        a string or list (see parameter `as_list`), in
+        which all words have been...
+            stripped of punctuation & numbers,
+            made lowercase,
+            parsed for stopwords,
+            and lemmatized/stemmed.
     '''
     
     # Instantiate regular expression tokenizer
@@ -52,7 +66,7 @@ def parse_doc(doc, root = 'lemmatize', stop_words = sw, as_list = False):
     # Remove stopwords
     doc = [word for word in doc if word not in stop_words]
     # Reducing to root words
-    if root == 'lemmatize':
+    if root == 'lemma':
         lemmatizer = WordNetLemmatizer()
         doc = pos_tag(doc)
         doc = [(word[0], get_wordnet_pos(word[1])) for word in doc]
