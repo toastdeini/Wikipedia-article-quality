@@ -11,7 +11,7 @@ class ModelForScoring():
     Lifted and modified from Flatiron DS Live lecture #51, "Workflow With Pipelines."
     '''
     
-    def __init__(self, model, model_name, X, y, cv_now='multi', print_now=True):
+    def __init__(self, model, model_name, X, y, cv_now='multi', print_now=True,):
         self.model = model
         self.name = model_name
         self.X = X
@@ -22,6 +22,7 @@ class ModelForScoring():
         self.cv_mean = None
         self.cv_median = None
         self.cv_std = None
+        self.cv_f1 = None
         
         # Cross-validate now?
         if cv_now == 'simple':
@@ -92,6 +93,9 @@ class ModelForScoring():
             self.cv_std = np.std(self.cv_results['test_accuracy'])
         else:
             pass
+
+        if 'f1_macro' in scoring_metrics:
+            self.cv_f1 = np.mean(self.cv_results['test_f1_macro'])
         
                                          
 # 2.) Global scoring function
