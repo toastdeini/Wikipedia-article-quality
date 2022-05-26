@@ -11,7 +11,7 @@ class ModelForScoring():
     Lifted and modified from Flatiron DS Live lecture #51, "Workflow With Pipelines."
     '''
     
-    def __init__(self, model, model_name, X, y, cv_now='simple'):
+    def __init__(self, model, model_name, X, y, cv_now='multi', print_now=True):
         self.model = model
         self.name = model_name
         self.X = X
@@ -30,6 +30,10 @@ class ModelForScoring():
             self.cv_multi()
         else:
             pass
+        
+        # Print results now?
+        if print_now:
+            return pretty_cv(self.cv_results)
            
             
     def cv_simple(self, X=None, y=None, kfolds=5):
