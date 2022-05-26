@@ -1,0 +1,7 @@
+name: wiki-predict
+channels:
+
+dependencies:
+
+
+prefix: /opt/anaconda3/envs/wiki-predict
