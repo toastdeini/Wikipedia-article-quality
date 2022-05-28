@@ -37,6 +37,7 @@ class ModelForScoring():
             return pretty_cv(self.cv_results)
            
             
+            
     def cv_simple(self, X=None, y=None, kfolds=5):
         '''
         Simple results of cross-validation.
@@ -52,6 +53,7 @@ class ModelForScoring():
         self.cv_mean = np.mean(self.cv_results)
         self.cv_median = np.median(self.cv_results)
         self.cv_std = np.std(self.cv_results)
+        
         
         
     def cv_multi(self, X=None, y=None, s_metrics=None, kfolds=5, verbose=1):
@@ -96,6 +98,43 @@ class ModelForScoring():
 
         if 'f1_macro' in scoring_metrics:
             self.cv_f1 = np.mean(self.cv_results['test_f1_macro'])
+        
+        
+        
+    def update_scores(self, acc_dict, f1_dict):
+        '''
+        Append accuracy and F1 scores to
+        dictionaries.
+
+        Paramaters
+        ----------
+
+        acc_dict : dictionary
+            Dictionary to store accuracy scores for
+            various models.
+        f1_dict : dictionary
+            Dictionary to store F1 scores for various
+            models.
+        model : ModelForScoring object (with 'cv_mean' and 
+        'cv_f1' defined)
+            Model whose cross-validation scores will be 
+            appended to dictionaries specified in arguments.
+        model_name : string
+            Name of key in dictionary, where key value pair
+            is < 'model_name': {score} >
+
+        Returns
+        -------
+        Updated dictionaries, storing cross-validated accuracy
+        and F1 scores for various models.
+        '''
+        
+        acc_dict[self.name] = self.cv_mean
+        f1_dict[self.name] = self.cv_f1
+
+        print(acc_dict)
+        print(f1_dict)
+        
         
                                          
 # 2.) Global scoring function
