@@ -30,12 +30,12 @@ def character_count(document):
 
 
 
-def compare_avg_counts(df, text_col, label_col, false_label, true_label, summary=True, create_plot=False):
+def compare_mean_counts(df, text_col, label_col, false_label, true_label, summary=True, create_plot=False):
     '''
     Used within the context of this project to compare word & character counts
     between `good` (label = 0) articles and `promotional` (label = 1) articles.
     
-    Compares average word & character count across two labels in a dataframe.
+    Compares mean word & character count across two labels in a dataframe.
     Returns a tuple of values.
     
     :param df: Dataframe object containing text and labels.
@@ -45,8 +45,8 @@ def compare_avg_counts(df, text_col, label_col, false_label, true_label, summary
     :param true_label: int, string, or bool
     '''
 
-    avg_char_false = df.loc[df[label_col] == false_label][text_col].str.len().mean()
-    avg_char_true = df.loc[df[label_col] == true_label][text_col].str.len().mean()
+    mean_char_false = df.loc[df[label_col] == false_label][text_col].str.len().mean()
+    mean_char_true = df.loc[df[label_col] == true_label][text_col].str.len().mean()
     
     split_words_false = df.loc[df[label_col] == false_label][text_col].str.split()
     split_words_true = df.loc[df[label_col] == true_label][text_col].str.split()
@@ -60,17 +60,17 @@ def compare_avg_counts(df, text_col, label_col, false_label, true_label, summary
     for doc in split_words_true:
         word_count_true += len(doc)
         
-    avg_words_false = word_count_false / len(split_words_false)
-    avg_words_true = word_count_true / len(split_words_true)
+    mean_words_false = word_count_false / len(split_words_false)
+    mean_words_true = word_count_true / len(split_words_true)
     
     if summary:
-        print(f"Average document length, label {false_label}: {avg_words_false:.0f} words, {avg_char_false:.0f} characters.")
-        print(f"Average document length, label {true_label}: {avg_words_true:.0f} words, {avg_char_true:.0f} characters.")
+        print(f"Mean document length, label {false_label}: {mean_words_false:.0f} words, {mean_char_false:.0f} characters.")
+        print(f"Mean document length, label {true_label}: {mean_words_true:.0f} words, {mean_char_true:.0f} characters.")
     
     if create_plot:
-        plot_word_counts(avg_words_false, avg_words_true)
+        plot_word_counts(mean_words_false, mean_words_true)
 
-    return (avg_words_false, avg_words_true)
+    return (mean_words_false, mean_words_true)
     
     
     
