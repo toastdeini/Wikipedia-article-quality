@@ -32,13 +32,9 @@ A brief inquiry into the *length* of the documents belonging to each class revea
 
 ---
 
-![img](images/avg_word_count.png)
-
----
+![img](images/mean_word_count.png)
 
 ![img](images/median_word_count.png)
-
----
 
 ## Methods
 
