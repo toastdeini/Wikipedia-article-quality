@@ -16,11 +16,10 @@ st.title("Is this Wikipedia article up to snuff?")
 
 article = st.text_area(
 "Find out by pasting the text of your article below!",
-"This is a sample text entry. Input your desired text here - the model's prediction \
-will be returned below.",
-height = 200,
+value=test_article_string,
+height=200,
 max_chars=100000,
-placeholder = 'Enter some text!'
+placeholder='Enter some text!'
 )
 
 pred = model.predict([parse_doc(article)])
