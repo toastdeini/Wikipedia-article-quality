@@ -11,7 +11,7 @@ class ModelForScoring():
     Lifted and modified from Flatiron DS Live lecture #51, "Workflow With Pipelines."
     '''
     
-    def __init__(self, model, model_name, X, y, cv_now='multi', print_now=True,):
+    def __init__(self, model, model_name, X, y, cv_now='multi', print_now=True):
         self.model = model
         self.name = model_name
         self.X = X

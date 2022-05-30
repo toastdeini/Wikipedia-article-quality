@@ -8,13 +8,20 @@ model = pickle.load(f)
 f.close()
 
 decoder = {
-    0 : 'Good article!',
-    1 : 'Not looking so great...'
+    0 : 'Looking good!',
+    1 : 'Hm, this could use some work...'
 }
 
 st.title("Is this Wikipedia article up to snuff?")
 
-article = st.text_area("Paste the text of the article you want to analyze here!", max_chars=100000)
+article = st.text_area(
+"Find out by pasting the text of your article below!",
+"This is a sample text entry. Input your desired text here - the model's prediction \
+will be returned below.",
+height = 200,
+max_chars=100000,
+placeholder = 'Enter some text!'
+)
 
 pred = model.predict([parse_doc(article)])
 
