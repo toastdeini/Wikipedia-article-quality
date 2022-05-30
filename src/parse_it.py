@@ -83,30 +83,12 @@ def parse_doc(doc, root = 'lemma', stop_words = sw, as_list = False):
     else:
         return ' '.join(doc)
 
-    
-def freq_out(df, col, n, stop_words = sw):
-    '''
-    Quick frequency distribution of the top n words from a document.
-    
-    :param df: DataFrame object
-    :param col: Column from DataFrame on which to run the function.
-    :param n: Number of most common items.
-    :param stop_words: Stop words for parsing.
-    :return: List of tuples containing most common words and number of occurrences.
-    '''
-    
-    word_freq = FreqDist()
-    
-    for text in df[col].map(lambda x: parse_doc(x)):
-        for word in text.split():
-            word_freq[word] +=1
-    return word_freq.most_commmon(n=n)
-
-test_article_string = "The Papuan mountain pigeon (Gymnophaps albertisii) is a species of bird\
- in the pigeon family Columbidae. It is found in the Bacan Islands, New Guinea,\
- the D'Entrecasteaux Islands, and the Bismarck Archipelago, where it inhabits\
- primary forest, montane forest, and lowlands. It is a medium-sized species of\
- pigeon, being 33–36 cm (13–14 in) long and weighing 259 g (9.1 oz) on average.\
+test_article_string = "**THIS IS SAMPLE TEXT**\n\nThe Papuan mountain pigeon\
+ (Gymnophaps albertisii) is a species of bird in the pigeon family Columbidae.\
+ It is found in the Bacan Islands, New Guinea, the D'Entrecasteaux Islands,\
+ and the Bismarck Archipelago, where it inhabits primary forest,\
+ montane forest, and lowlands. It is a medium-sized species of pigeon,\
+ being 33–36 cm (13–14 in) long and weighing 259 g (9.1 oz) on average.\
  Adult males have slate-grey upperparts, chestnut-maroon throats and bellies,\
  whitish breasts, and a pale grey terminal tail band. The lores and orbital region\
  are bright red. Females are similar, but have grayish breasts and grey edges to\
@@ -133,3 +115,24 @@ test_article_string = "The Papuan mountain pigeon (Gymnophaps albertisii) is a s
  superspecies with the other species in its genus. Within its family, the genus\
  Gymnophaps is sister to Lopholaimus, and these two together form a clade sister to\
  Hemiphaga.[8] The Papuan mountain pigeon has two subspecies:[a][3]"
+
+
+# Commented out due to expensive computation time - needs reworked
+
+# def freq_out(df, col, n, stop_words = sw):
+#     '''
+#     Quick frequency distribution of the top n words from a document.
+    
+#     :param df: DataFrame object
+#     :param col: Column from DataFrame on which to run the function.
+#     :param n: Number of most common items.
+#     :param stop_words: Stop words for parsing.
+#     :return: List of tuples containing most common words and number of occurrences.
+#     '''
+    
+#     word_freq = FreqDist()
+    
+#     for text in df[col].map(lambda x: parse_doc(x)):
+#         for word in text.split():
+#             word_freq[word] +=1
+#     return word_freq.most_commmon(n=n)
