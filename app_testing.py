@@ -1,6 +1,8 @@
 # Imports
 import streamlit as st
 import pickle
+# Source file contains both parsing function
+# and default string for app on loadup
 from src.parse_it import *
 
 f = open('models/xgb_model.sav', 'rb')
@@ -22,6 +24,8 @@ max_chars=100000,
 placeholder='Enter some text!'
 )
 
+# run = st.button("Click to run!")
+# if run:    
 pred = model.predict([parse_doc(article)])
 
 st.write(decoder[pred[0]])
