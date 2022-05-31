@@ -14,11 +14,13 @@ Over the course of its twenty-plus-year existence, Wikipedia's reputation has gr
 
 The site's reliability and ongoing improvement can be attributed, in large part, to the fastidiousness of Wikipedia's volunteer editors, who have been using Bayesian statistics for at least fifteen years now to identify ["vandalism"](https://en.wikipedia.org/wiki/Wikipedia:Vandalism) - bad-faith edits "deliberately intended to obstruct" the distribution of verifiable, open-source knowledge - with scripts like [ClueBot](https://en.wikipedia.org/wiki/User:ClueBot_NG). The steadily increasing proportion of "[good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_article_statistics)" is the direct result of a concerted, altruistic effort by English speakers across the world to create an accessible, democratized encyclopedia.
 
+<!--- line plot of data from wikipedia -- good articles over time --->
+
 Regrettably, not everyone who fires up their computer (or phone!) to edit Wikipedia has equally noble intentions. Though the site's policy makes clear that Wikipedia is "[**not** a soapbox or means of promotion](https://en.wikipedia.org/wiki/Wikipedia:What_Wikipedia_is_not#Wikipedia_is_not_a_soapbox_or_means_of_promotion)" (emphasis mine), upwards of 20,000 articles on the site fail to purport a neutral point of view, and hundreds of these "[articles with a promotional tone](https://en.wikipedia.org/wiki/Category:Articles_with_a_promotional_tone)" are identified monthly by editors and everyday visitors.
 
 Articles with a slanted perspective present a threat not only to Wikipedia's credibility as a source of knowledge, but also to the average user: without prior knowledge of the subject at hand, how can a reader know if the information they're getting is objective, other than by intuition? This is where machine learning and natural language processing (NLP) enter the picture: a model trained on data that represents the contents of **both "good" and "promotional" articles** will be able to forecast whether a body of text meets an encyclopedic editorial standard, or if the text is likely to be marked by readers as "promotional" and thus not useful.
 
-The final model classifies unseen documents with an accuracy rate hovering **just above 90%** using a term importance (TF-IDF) vectorizer and a classifier that combines multinomial naive Bayes with the popular `XGBoost` library. Users inputting a passage of text into the application that employs this model can be confident that, nine times out of ten, they will know almost immediately if a given Wikipedia is written from a sufficiently neutral point of view, or if the article is more like a glorified advertisement.
+The final model classifies unseen documents with an accuracy rate hovering **just above 90%** using a term importance (TF-IDF) vectorizer and a classifier that combines multinomial naive Bayes with the popular `XGBoost` library. Users inputting a passage of text into the [application](https://share.streamlit.io/toastdeini/wikipedia-article-quality/main/app_testing.py) that employs this model can be confident that, nine times out of ten, they will know almost immediately if a given Wikipedia is written from a sufficiently neutral point of view, or if the article is more like a glorified advertisement.
 
 ## Business Problem
 
@@ -50,7 +52,7 @@ Initial exploration & analysis of the data utilized the [pandas](https://pandas.
 
 Two vectorization methods were tested for each algorithm employed: a simple bag-of-words approach (`CountVectorizer`) and a term importance approach (`TfidfVectorizer`). Results are reported for each vectorizer.
 
-scikit-learn's `DummyClassifier` acted as a baseline model, against which other algorithms could be compared. The `DummyClassifier` returned an accuracy score of **0.560**, i.e. the proportion of the majority class (`good` articles) in the dataset. Any algorithm that predicts with a lower accuracy score than the dummy is effectively worthless, as far as we're concerned, and we'll be looking to improve substantially on that 56% accuracy rate in the iterative modeling process.
+scikit-learn's `DummyClassifier` acted as a baseline model, against which other algorithms could be compared. The `DummyClassifier` returned an accuracy score of **0.56** / 56%, i.e. the proportion of articles matching the majority class (`good` articles) in the dataset. Any algorithm that predicts with a lower accuracy score than the dummy model is effectively worthless, as far as we're concerned, and we'll be looking to improve substantially on that 56% accuracy rate in the iterative modeling process.
 
 ### Iterative Modeling
 
@@ -71,9 +73,13 @@ Modeling began with two straightforward classification algorithms: decision tree
     - Accuracy: `0.793`
     - F1 score (macro): `0.770`
 
-### Final Model for Testing
+Even before tuning hyperparamaters, we are seeing improvements from the `DummyClassifier`'s accuracy and F1 scores. This is a good sign, but hardly the end of the road.
 
-The massively popular gradient boosting library [XGBoost](https://xgboost.readthedocs.io/en/stable/) proved most effective in accurately identifying an article as "promotional."
+Despite its less impressive performance when predicting on a TF-IDF vectorized array, the multinomial naive Bayes classifier was associated with the lowest fitting/scoring time of all the untuned algorithms, without a significant compromise in accuracy. For this reason, the `MultinomialNB` classifier will be further explored in the modeling process.
+
+### Final Model (for Testing and Deployment)
+
+- [XGBoost](https://xgboost.readthedocs.io/en/stable/) documentation
 
 ## Results
 
@@ -87,7 +93,7 @@ The massively popular gradient boosting library [XGBoost](https://xgboost.readth
 
 ### Next Steps
 
-- **Collaborate with administrators of [fandom wikis](https://www.fandom.com/explore) to gather new, high-quality training data:** Justification
+- **Collaborate with administrators of [fandom wikis](https://www.fandom.com/explore) to gather new, high-quality training data:** Articles/text data containing in-depth information on a wider variety of subjects - especially niche ones - than Wikipedia offers might help the model's performance on unseen data.
 - **Next step:** Justification
 - **Next step:** Justification
 
@@ -106,5 +112,5 @@ The massively popular gradient boosting library [XGBoost](https://xgboost.readth
 
 ## Further Reading and Citations
 
-- Link to [Jupyter notebook](Final_Notebook.ipynb)
+- Link to [Jupyter notebook](notebook.ipynb)
 - Link to [non-technical presentation](presentation.pdf)
