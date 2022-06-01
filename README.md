@@ -1,8 +1,9 @@
 # Predicting Wikipedia Article Quality Using Natural Language Processing
 
-![img](images/tomes.jpg)
+![img](images/header.jpg)
 
-*(photo courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk))*
+*(photo courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk);
+good article [symbol](https://en.wikipedia.org/wiki/Wikipedia:Good_articles#/media/File:Symbol_support_vote.svg) by Zscout370, improved by Ed g2s, simplified by Erin Silversmith; article for improvement star symbol by Booyabazooka and Mark Miller)*
 
 ## Authors
 
@@ -14,7 +15,7 @@ Over the course of its twenty-plus-year existence, Wikipedia's reputation has gr
 
 The site's reliability and ongoing improvement can be attributed, in large part, to the fastidiousness of Wikipedia's volunteer editors, who have been using Bayesian statistics for at least fifteen years now to identify ["vandalism"](https://en.wikipedia.org/wiki/Wikipedia:Vandalism) - bad-faith edits "deliberately intended to obstruct" the distribution of verifiable, open-source knowledge - with scripts like [ClueBot](https://en.wikipedia.org/wiki/User:ClueBot_NG). The steadily increasing proportion of "[good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_article_statistics)" is the direct result of a concerted, altruistic effort by English speakers across the world to create an accessible, democratized encyclopedia.
 
-<!--- line plot of data from wikipedia -- good articles over time --->
+![img](images/pct_good_articles.png)
 
 Regrettably, not everyone who fires up their computer (or phone!) to edit Wikipedia has equally noble intentions. Though the site's policy makes clear that Wikipedia is "[**not** a soapbox or means of promotion](https://en.wikipedia.org/wiki/Wikipedia:What_Wikipedia_is_not#Wikipedia_is_not_a_soapbox_or_means_of_promotion)" (emphasis mine), upwards of 20,000 articles on the site fail to purport a neutral point of view, and hundreds of these "[articles with a promotional tone](https://en.wikipedia.org/wiki/Category:Articles_with_a_promotional_tone)" are identified monthly by editors and everyday visitors.
 
@@ -38,11 +39,11 @@ It is important to note that the classes in discussion here - that is, whether a
 
 A brief inquiry into the *length* of the documents belonging to each class revealed that `good` articles are, on average, about **three to four times longer** than `promotional` articles, and that **more than half** of articles in the `promotional` set are less than 500 words long. This is descriptive, not predictive, but it helps enhance our understanding of the data.
 
----
+![img](images/wc_mean_v_median.png)
 
+<!-- Display of separate charts:
 ![img](images/mean_word_count.png)
-
-![img](images/median_word_count.png)
+![img](images/median_word_count.png) -->
 
 ## Methods
 
@@ -83,6 +84,11 @@ Despite its less impressive performance when predicting on a TF-IDF vectorized a
 
 ## Results
 
+![img](images/acc_scores_bar.png)
+
+<!-- F1 scores, if this is preferred:
+![img](images/f1_scores_bar.png) -->
+
 <!-- Visualization of error - ROC curve? -->
 
 ## Conclusions
@@ -102,12 +108,13 @@ Despite its less impressive performance when predicting on a TF-IDF vectorized a
 ```text
 ├── data
 ├── images
-├── models              # Saved models, other objects
-├── prep                # EDA and modeling notebooks
-├── src                 # Helper functions and classes
+├── models               # Saved models, other objects
+├── prep                 # EDA and modeling notebooks
+├── src                  # Helper functions and classes
+├── app.py               # Streamlit application script
 ├── README.md
 ├── presentation.pdf
-└── notebook.ipynb      # Final analysis notebook
+└── notebook.ipynb       # Final analysis notebook
 ```
 
 ## Further Reading and Citations
