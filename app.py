@@ -19,13 +19,14 @@ st.title("Is this Wikipedia article up to snuff?")
 article = st.text_area(
 "Find out by pasting the text of your article below!",
 value=test_article_string,
-height=200,
+height=380,
 max_chars=100000,
 placeholder='Enter some text!'
 )
 
-# run = st.button("Click to run!")
-# if run:    
-pred = model.predict([parse_doc(article)])
+run = st.button("Click to run!")
 
-st.write(decoder[pred[0]])
+if run:    
+    pred = model.predict([parse_doc(article)])
+
+    st.write(decoder[pred[0]])
