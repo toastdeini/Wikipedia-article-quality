@@ -2,8 +2,9 @@
 
 ![img](images/header.jpg)
 
-*(photo courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk);
-good article [symbol](https://en.wikipedia.org/wiki/Wikipedia:Good_articles#/media/File:Symbol_support_vote.svg) by Zscout370, improved by Ed g2s, simplified by Erin Silversmith; article for improvement star symbol by Booyabazooka and Mark Miller)*
+*(Image background courtesy of Dmitrij Paskevic, hosted on [Unsplash](https://unsplash.com/photos/YjVa-F9P9kk).*
+
+*Good article [symbol](https://en.wikipedia.org/wiki/Wikipedia:Good_articles#/media/File:Symbol_support_vote.svg) by Zscout370, improved by Ed g2s, simplified by Erin Silversmith; article for improvement [star symbol](https://en.wikipedia.org/wiki/Wikipedia:Articles_for_improvement#/media/File:Articles_for_improvement_star.svg) by Booyabazooka and Mark Miller. Both graphics originate on English-language Wikipedia. Collage by author.)*
 
 ## Authors
 
@@ -13,7 +14,7 @@ good article [symbol](https://en.wikipedia.org/wiki/Wikipedia:Good_articles#/med
 
 Over the course of its twenty-plus-year existence, Wikipedia's reputation has gradually evolved from that of a [digital "Wild West"](https://www.cnn.com/2009/TECH/08/26/wikipedia.editors/index.html), [replete with misinformation](https://usatoday30.usatoday.com/news/opinion/editorials/2005-11-29-wikipedia-edit_x.htm), to that of a [meticulously curated](https://en.wikipedia.org/wiki/Vandalism_on_Wikipedia#Prevention) and (generally) reliable resource for [fact-checking](https://en.wikipedia.org/wiki/Wikipedia_and_fact-checking) & bird's-eye/survey-level research.
 
-The site's reliability and ongoing improvement can be attributed, in large part, to the fastidiousness of Wikipedia's volunteer editors, who have been using Bayesian statistics for at least fifteen years now to identify ["vandalism"](https://en.wikipedia.org/wiki/Wikipedia:Vandalism) - bad-faith edits "deliberately intended to obstruct" the distribution of verifiable, open-source knowledge - with scripts like [ClueBot](https://en.wikipedia.org/wiki/User:ClueBot_NG). The steadily increasing proportion of "[good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_article_statistics)" is the direct result of a concerted, altruistic effort by English speakers across the world to create an accessible, democratized encyclopedia.
+The site's reliability and ongoing improvement can be attributed, in large part, to the fastidiousness of Wikipedia's volunteer editors, who have been using Bayesian statistics for at least fifteen years now to identify "[vandalism](https://en.wikipedia.org/wiki/Wikipedia:Vandalism)" - bad-faith edits "deliberately intended to obstruct" the distribution of verifiable, open-source knowledge - with scripts like [ClueBot](https://en.wikipedia.org/wiki/User:ClueBot_NG). The steadily increasing proportion of "[good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_article_statistics)" is the direct result of a concerted, altruistic effort by English speakers across the world to create an accessible, democratized encyclopedia.
 
 ![img](images/pct_good_articles.png)
 
@@ -82,26 +83,31 @@ Despite its less impressive performance when predicting on a TF-IDF vectorized a
 
 - [XGBoost](https://xgboost.readthedocs.io/en/stable/) documentation
 
+The final model was also **deployed as  a Streamlit application**, which you can test [here](https://share.streamlit.io/toastdeini/wikipedia-article-quality/main/app_testing.py).
+
 ## Results
 
 ![img](images/acc_scores_bar.png)
 
-<!-- F1 scores, if this is preferred:
-![img](images/f1_scores_bar.png) -->
+---
+
+![img](images/f1_scores_bar.png)
 
 <!-- Visualization of error - ROC curve? -->
 
 ## Conclusions
 
-- **Recommendation:** Justification
-- **Recommendation:** Justification
-- **Recommendation:** Justification
+1. **Integrate the model/application into existing Wikipedia UI:** This could immediately assist site visitors who are curious about the verifiability or quality of an article they might be reading.
+2. **Auto-classify articles for expedited review:** Create *preliminary classifications* for unlabeled articles, which can later be reviewed by Wikipedia contributos and editors.
+
+---
 
 ### Next Steps
 
-- **Collaborate with administrators of [fandom wikis](https://www.fandom.com/explore) to gather new, high-quality training data:** Articles/text data containing in-depth information on a wider variety of subjects - especially niche ones - than Wikipedia offers might help the model's performance on unseen data.
-- **Next step:** Justification
-- **Next step:** Justification
+- **Collaborate with administrators of [Fandom](https://www.fandom.com/explore) wikis to gather new, robust training data:** Articles containing in-depth information on a wider variety of subjects - especially niche ones - than Wikipedia offers might help the model's performance on unseen data.
+- **Engineer additional features:** The number of citations in an article, for instance, might be a relevant predictor of the article's objective quality. The bar charts displaying the disparate median word count between "good" and "promotional" articles also present a strong case for further examining word count as a predictive feature.
+- **Explore new vectorization and modeling techniques:** Methods like *word embedding* and incorporating neural network algorithms might improve model performance, especially on less "clean" data than Wikipedia provides.
+- **Refine application to accept URLs as input:** Including options to input **either** raw text or a URL into the model for classification would further streamline the user experience.
 
 ## Repository Structure
 
@@ -112,6 +118,7 @@ Despite its less impressive performance when predicting on a TF-IDF vectorized a
 ├── prep                 # EDA and modeling notebooks
 ├── src                  # Helper functions and classes
 ├── app.py               # Streamlit application script
+├── environment.yml
 ├── README.md
 ├── presentation.pdf
 └── notebook.ipynb       # Final analysis notebook
