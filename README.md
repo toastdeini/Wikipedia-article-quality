@@ -77,13 +77,17 @@ Modeling began with two straightforward classification algorithms: decision tree
 
 Even before tuning hyperparamaters, we are seeing improvements from the `DummyClassifier`'s accuracy and F1 scores. This is a good sign, but hardly the end of the road.
 
-Despite its less impressive performance when predicting on a TF-IDF vectorized array, the multinomial naive Bayes classifier was associated with the lowest fitting/scoring time of all the untuned algorithms, without a significant compromise in accuracy. For this reason, the `MultinomialNB` classifier will be further explored in the modeling process.
+Despite its less impressive performance when predicting on a TF-IDF vectorized array, the multinomial naive Bayes classifier was associated with the lowest fitting/scoring time of all the untuned algorithms, without a significant compromise in accuracy. For this reason, the `MultinomialNB` classifier's hyperparameters were tuned until its cross-validation metrics were comparable (though still somewhat inferior) to those of a `RandomForestClassifier`, with accuracy and F1 scores in the range of `0.90 - 0.93`.
+
+Algorithms using **gradient boosted trees** proved most effective in accurately classifying the data.
 
 ### Final Model (for Testing and Deployment)
 
 - [XGBoost](https://xgboost.readthedocs.io/en/stable/) documentation
 
-The final model was also **deployed as  a Streamlit application**, which you can test [here](https://share.streamlit.io/toastdeini/wikipedia-article-quality/main/app_testing.py).
+TF-IDF vectorization might be a preferable approach to preprocessing as the volume (and diversity) of training data increases.
+
+The final model was also **incorporated into  a Streamlit application**, which, though it was unable to be deployed for public usage, looked something like [this](link.ext).
 
 ## Results
 
@@ -98,9 +102,11 @@ The final model was also **deployed as  a Streamlit application**, which you can
 ## Conclusions
 
 1. **Integrate the model/application into existing Wikipedia UI:** This could immediately assist site visitors who are curious about the verifiability or quality of an article they might be reading.
-2. **Auto-classify articles for expedited review:** Create *preliminary classifications* for unlabeled articles, which can later be reviewed by Wikipedia contributos and editors.
+2. **Auto-classify articles for expedited review:** Create *preliminary classifications* for unlabeled articles, which can later be reviewed by Wikipedia contributors and editors.
 
----
+![img](images/citation.png)
+
+*(Image courtesy of [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/1/18/%22Citation_needed%22.jpg))*
 
 ### Next Steps
 
@@ -126,5 +132,5 @@ The final model was also **deployed as  a Streamlit application**, which you can
 
 ## Further Reading and Citations
 
-- Link to [Jupyter notebook](notebook.ipynb)
+- Link to [final Jupyter notebook](notebook.ipynb)
 - Link to [non-technical presentation](presentation.pdf)
