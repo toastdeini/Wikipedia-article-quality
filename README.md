@@ -22,13 +22,15 @@ Regrettably, not everyone who fires up their computer (or phone!) to edit Wikipe
 
 Articles with a slanted perspective present a threat not only to Wikipedia's credibility as a source of knowledge, but also to the average user: without prior knowledge of the subject at hand, how can a reader know if the information they're getting is objective, other than by intuition? This is where machine learning and natural language processing (NLP) enter the picture: a model trained on data that represents the contents of **both "good" and "promotional" articles** will be able to forecast whether a body of text meets an encyclopedic editorial standard, or if the text is likely to be marked by readers as "promotional" and thus not useful.
 
-The final model classifies unseen documents with an accuracy rate hovering **just above 90%** using a term importance (TF-IDF) vectorizer and a classifier that combines multinomial naive Bayes with the popular `XGBoost` library. Users inputting a passage of text into the [application](https://share.streamlit.io/toastdeini/wikipedia-article-quality/main/app_testing.py) that employs this model can be confident that, nine times out of ten, they will know almost immediately if a given Wikipedia is written from a sufficiently neutral point of view, or if the article is more like a glorified advertisement.
+The final model classifies unseen documents with an accuracy rate hovering **just above 90%** using a term importance (TF-IDF) vectorizer and a classifier from the popular `XGBoost` library. Users inputting a passage of text into the [application](https://share.streamlit.io/toastdeini/wikipedia-article-quality/main/app_testing.py) that employs this model can be confident that, nine times out of ten, they will know almost immediately if a given Wikipedia is written from a sufficiently neutral point of view, or if the article is more like a glorified advertisement.
 
 ## Business Problem
 
 Create a tool/model/application with natural language processing (NLP) that can predict whether a body of text, e.g. a Wikipedia article, meets objective standards of quality or if it is marked by a promotional tone, indicating potential for bias. An effective product will benefit both stakeholders at Wikipedia and the website's users.
 
 ## Data
+
+> All data used in this project has been uploaded externally by the author [here](https://www.mediafire.com/folder/kqlo7r936ufdp/flatiron-capstone-data) to expedite reproducibility.
 
 Data used in this project is freely available for download on [Kaggle](https://www.kaggle.com/datasets/urbanbricks/wikipedia-promotional-articles), courtesy of user `urbanbricks`. "[Good articles](https://en.wikipedia.org/wiki/Wikipedia:Good_articles)" - articles which meet a "core set of editorial standards" - were stored as strings (with corresponding URLs) in one CSV file, `good.csv`. Articles with a "[promotional tone](https://en.wikipedia.org/wiki/Category:Articles_with_a_promotional_tone)" were stored in a separate CSV (`promotional.csv`) that, in addition to `text` and `url` columns, contains one-hot encoded columns that identify a subclass of promotional tone, e.g. `advert` (written like an advertisement) or `coi` (conflict of interest with subject).
 
@@ -101,12 +103,13 @@ The final model was also **incorporated into  a Streamlit application**, which, 
 
 ## Conclusions
 
-1. **Integrate the model/application into existing Wikipedia UI:** This could immediately assist site visitors who are curious about the verifiability or quality of an article they might be reading.
-2. **Auto-classify articles for expedited review:** Create *preliminary classifications* for unlabeled articles, which can later be reviewed by Wikipedia contributors and editors.
-
 ![img](images/citation.png)
 
 *(Image courtesy of [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/1/18/%22Citation_needed%22.jpg))*
+
+1. **Integrate the model/application into existing Wikipedia UI:** This could immediately assist site visitors who are curious about the verifiability or quality of an article they might be reading.
+
+2. **Auto-classify articles for expedited review:** Create *preliminary classifications* for unlabeled articles, which can later be reviewed by Wikipedia contributors and editors.
 
 ### Next Steps
 
