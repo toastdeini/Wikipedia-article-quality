@@ -1,4 +1,4 @@
-name: learn-env
+name: wiki-env
 channels:
   - conda-forge
   - defaults
@@ -326,4 +326,3 @@ dependencies:
     - wrapt==1.12.1
     - xgboost==1.2.1
     - yellowbrick==1.4
-prefix: C:\Users\toast\anaconda3\envs\learn-env
