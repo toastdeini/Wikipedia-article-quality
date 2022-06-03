@@ -24,9 +24,10 @@ max_chars=100000,
 placeholder='Enter some text!'
 )
 
+pred = model.predict([parse_doc(article)])
+
 run = st.button("Click to run!")
 
 if run:    
-    pred = model.predict([parse_doc(article)])
 
     st.write(decoder[pred[0]])
