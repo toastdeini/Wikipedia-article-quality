@@ -85,7 +85,7 @@ Even before tuning hyperparamaters, we are seeing improvements from the `DummyCl
 
 Despite its less impressive performance when predicting on a TF-IDF vectorized array, the multinomial naive Bayes classifier was associated with the lowest fitting/scoring time of all the untuned algorithms, without a significant compromise in accuracy. For this reason, the `MultinomialNB` classifier's hyperparameters were tuned until its cross-validation metrics were comparable (though still somewhat inferior) to those of a `RandomForestClassifier`, with accuracy and F1 scores in the range of `0.90 - 0.93`.
 
-Algorithms using **gradient boosted trees** proved most effective in accurately classifying the data. The results for the best-performing algorithm, the `XGBoost` classifier, are listed below; these numbers are just *slightly* greater than those returned by a model trained using the `GradientBoostingClassifier`.
+Algorithms using **gradient boosted trees** proved most effective in accurately classifying the data. The cross-validation results for the best-performing algorithm, the `XGBoost` classifier, are listed below; these numbers are just *slightly* greater than those returned by a model trained using the `GradientBoostingClassifier`.
 
 - `XGBClassifier`:
   - `CountVectorizer`
@@ -107,7 +107,7 @@ The final model was also incorporated into a **Streamlit application**, which, t
 
 Using both accuracy and macro $F_1$ score as metrics, model performance improved steadily as I iterated through various algorithms: first, a tree-based classifier (`DecisionTree`) and a naive Bayes classifier (`MultinomialNB`), which is highly popular in NLP classification problems, yielded scores in the ballpark of `0.80`. Some slightly more involved algorithms - `RandomForest`, another tree-based classifer, and the aptly-named `GradientBoostingClassifier` - demonstrated even better performance, hovering around `0.90`.
 
-But, with regards to **both** accuracy and macro $F_1$ scores, the **XGBoost library** was the star of the show; an *untuned* model using `XGBClassifier` predicted on unseen data with **94% accuracy** - this was the impetus behind my choice to select the `XGBClassifier` as the algorithm for my finalized model.
+But, with regards to **both** accuracy and macro $F_1$ scores, the **XGBoost library** was the star of the show; an *untuned* model using `XGBClassifier` predicted om validation data with **95% accuracy** — this was the impetus behind my choice to select the `XGBClassifier` as the algorithm for my finalized model.
 
 ![img](images/acc_scores_bar.png)
 
@@ -115,9 +115,9 @@ But, with regards to **both** accuracy and macro $F_1$ scores, the **XGBoost lib
 
 ![img](images/f1_scores_bar.png)
 
-Performance metrics might be further improved with different preprocessing techniques and hyperparametric tuning of the `XGBClassifier`.
+Performance metrics might be further improved with different preprocessing techniques and hyperparametric tuning of the `XGBClassifier`, but this project capped out with scores of **0.95** for both accuracy and macro $F_1$.
 
-> See [this notebook](prep/Model_Tuning.ipynb) for more verbose documentation of the final model tuning process.
+> See [this notebook](prep/Model_Tuning.ipynb) for more verbose documentation of the (nascent) model tuning process.
 
 <!-- Visualization of error - ROC curve? -->
 
@@ -141,11 +141,11 @@ Performance metrics might be further improved with different preprocessing techn
 ## Repository Structure
 
 ```text
-├── /data                # (Uploaded externally)
-├── /images
-├── /models              # Saved models, other objects
-├── /prep                # EDA and modeling notebooks
-├── /src                 # Helper functions and classes
+├── data/                # (Uploaded externally)
+├── images/
+├── models/              # Saved models, other objects
+├── prep/                # EDA and modeling notebooks
+├── src/                 # Helper functions and classes
 │
 │
 ├── app.py               # Streamlit application script
@@ -155,7 +155,7 @@ Performance metrics might be further improved with different preprocessing techn
 └── presentation.pdf
 ```
 
-## Further Reading and Citations
+## Supplementary Material
 
-- Link to [final Jupyter notebook](notebook.ipynb)
-- Link to [non-technical presentation](presentation.pdf)
+- A high-level overview of the project can be found in the [final Jupyter notebook](notebook.ipynb).
+- Slides from the [non-technical presentation](presentation.pdf), delivered on June 2, 2022.
