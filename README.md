@@ -141,18 +141,18 @@ Performance metrics might be further improved with different preprocessing techn
 ## Repository Structure
 
 ```text
-├── data/                # (Uploaded externally)
-├── images/
-├── models/              # Saved models, other objects
-├── prep/                # EDA and modeling notebooks
-├── src/                 # Helper functions and classes
-│
-│
-├── app.py               # Streamlit application script
-├── environment.yml
-├── notebook.ipynb       # Final analysis notebook
-├── README.md
-└── presentation.pdf
+├── data/                       # (Uploaded externally)
+├── Wikipedia-article-quality
+│       ├── images/
+│       ├── models/             # Saved models/objects
+│       ├── prep/               # EDA & modeling notebooks
+│       ├── src/                # Helper functions & classes
+│       │
+│       ├── app.py              # Streamlit app script
+│       ├── environment.yml
+│       ├── notebook.ipynb      # Final analysis notebook
+│       ├── README.md
+│       └── presentation.pdf
 ```
 
 ## Supplementary Material
