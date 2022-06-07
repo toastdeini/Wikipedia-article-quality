@@ -107,7 +107,7 @@ The final model was also incorporated into a **Streamlit application**, which, t
 
 Using both accuracy and macro $F_1$ score as metrics, model performance improved steadily as I iterated through various algorithms: first, a tree-based classifier (`DecisionTree`) and a naive Bayes classifier (`MultinomialNB`), which is highly popular in NLP classification problems, yielded scores in the ballpark of `0.80`. Some slightly more involved algorithms - `RandomForest`, another tree-based classifer, and the aptly-named `GradientBoostingClassifier` - demonstrated even better performance, hovering around `0.90`.
 
-But, with regards to **both** accuracy and macro $F_1$ scores, the **XGBoost library** was the star of the show; an *untuned* model using `XGBClassifier` predicted om validation data with **95% accuracy** — this was the impetus behind my choice to select the `XGBClassifier` as the algorithm for my finalized model.
+But, with regards to **both** accuracy and macro $F_1$ scores, the **XGBoost library** was the star of the show; an *untuned* model using `XGBClassifier` predicted on validation data with **95% accuracy** — this was the impetus behind my choice to select the `XGBClassifier` as the algorithm for my finalized model.
 
 ![img](images/acc_scores_bar.png)
 
